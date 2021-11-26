@@ -60,5 +60,37 @@ router.post('/genre', async (req, res) => {
   }
 });
 
+router.put('/genre/:id', async (req, res) => {
+  try {
+    
+    var genre = await db.Genre.findOne({where:{id: req.params.id}})
+
+    genre.name = req.body.name;
+
+    await genre.save();
+    
+    return res.json({
+      genre
+    });
+    } catch (err) {
+    console.log(err)
+    return res.status(500).json(err)
+    }
+  });
+
+  router.delete('/genre/:id', async (req, res) => {
+    const id = req.body.id
+    try {
+      const genre = await db.Genre.findOne({ where: { id } })
+  
+      await genre.destroy()
+  
+      return res.json({ message: 'Genre deleted !' })
+    } catch (err) {
+      console.log(err)
+      return res.status(500).json({ error: 'Something went wrong' })
+    }
+  });
+
 
 module.exports = router;
