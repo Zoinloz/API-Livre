@@ -36,4 +36,26 @@ router.get('/livre/:id', async (req, res) => {
   }
   });
 
+  router.post('/livre', async (req, res) => {
+    try {
+      const newLivre = {
+        title: req.body.title,
+        author: req.body.author,
+        image: req.body.image,
+        description: req.body.description,
+        genreId: req.body.genreId,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      }
+      var livre = await db.Livre.create(newLivre);
+      return res.json({
+        livre
+      });
+    } catch (err) {
+      console.log(err)
+      return res.status(500).json(err)
+    }
+    });
+
+
 module.exports = router;
