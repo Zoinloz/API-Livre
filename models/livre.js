@@ -1,4 +1,5 @@
 'use strict';
+const db = require("../models");
 const {
   Model
 } = require('sequelize');
@@ -10,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      Livre.belongsTo(models.Genre, {foreignKey: 'genreId', as:'genre'})
+      Livre.belongsTo(models.Genre, { foreignKey: 'genreId', as: 'genre' })
     }
   };
   Livre.init({
@@ -18,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
     author: DataTypes.STRING,
     image: DataTypes.STRING,
     description: DataTypes.TEXT,
-    genreId: DataTypes.INTEGER
+    genreId: DataTypes.INTEGER,
   }, {
     sequelize,
     modelName: 'Livre',

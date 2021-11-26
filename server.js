@@ -35,5 +35,8 @@ app.listen(PORT, () => {
   const genreRouter = require('./controllers/genre-controller');
   app.use('/', genreRouter);  
 
+  const livreRouter = require('./controllers/livre-controller');
+  app.use('/', livreRouter);  
+
   
 });
