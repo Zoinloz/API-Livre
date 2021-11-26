@@ -22,4 +22,22 @@ router.get('/genre', async (req, res) => {
           });
 });
 
+router.post('/genre', async (req, res) => {
+  try {
+    const newGenre = {
+      name: req.body.name,
+      createdAt: new Date(),
+      updatedAt: new Date()
+    }
+    var genre = await db.Genre.create(newGenre);
+    return res.json({
+      genre
+    });
+  } catch (err) {
+    console.log(err)
+    return res.status(500).json(err)
+  }
+  });
+
+
 module.exports = router;
