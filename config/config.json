@@ -1,7 +1,7 @@
 {
   "development": {
-    "username": "admin",
-    "password": "root",
+    "username": "root",
+    "password": null,
     "database": "projetlivre",
     "host": "localhost",
     "dialect": "mysql"
