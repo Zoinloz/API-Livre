@@ -1,0 +1,9 @@
+{
+  "development": {
+    "username": "admin",
+    "password": "root",
+    "database": "projetlivre",
+    "host": "localhost",
+    "dialect": "mysql"
+  }
+}
