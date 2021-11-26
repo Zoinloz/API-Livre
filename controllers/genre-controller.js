@@ -7,19 +7,19 @@ const Op = db.Sequelize.Op;
 const router = express.Router();
 
 router.get('/genre', async (req, res) => {
-    const name = req.query.name;
-        var condition = name ? { name: { [Op.like]: `%${name}%` } } : null;
-      
-        db.Genre.findAll({ where: condition })
-          .then(data => {
-            res.send(data);
-          })
-          .catch(err => {
-            res.status(500).send({
-              message:
-                err.message || "Some error occurred while retrieving tutorials."
-            });
-          });
+  const name = req.query.name;
+  var condition = name ? { name: { [Op.like]: `%${name}%` } } : null;
+
+  db.Genre.findAll({ where: condition })
+    .then(data => {
+      res.send(data);
+    })
+    .catch(err => {
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving tutorials."
+      });
+    });
 });
 
 router.post('/genre', async (req, res) => {
@@ -29,15 +29,23 @@ router.post('/genre', async (req, res) => {
       createdAt: new Date(),
       updatedAt: new Date()
     }
-    var genre = await db.Genre.create(newGenre);
-    return res.json({
-      genre
-    });
+
+    if (newGenre.name !== "") {
+      var genre = await db.Genre.create(newGenre);
+      return res.json({
+        genre
+      });
+    }
+
+    else {
+      return res.status(400).json("Name Null")
+    }
+
   } catch (err) {
     console.log(err)
     return res.status(500).json(err)
   }
-  });
+});
 
 
 module.exports = router;
