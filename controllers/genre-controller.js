@@ -79,7 +79,7 @@ router.put('/genre/:id', async (req, res) => {
   });
 
   router.delete('/genre/:id', async (req, res) => {
-    const id = req.body.id
+    const id = req.params.id
     try {
       const genre = await db.Genre.findOne({ where: { id } })
   

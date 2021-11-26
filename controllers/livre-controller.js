@@ -57,5 +57,18 @@ router.get('/livre/:id', async (req, res) => {
     }
     });
 
+    router.delete('/livre/:id', async (req, res) => {
+        const id = req.params.id
+        try {
+          const livre = await db.Livre.findOne({ where: { id } })
+      
+          await livre.destroy()
+      
+          return res.json({ message: 'Livre deleted !' })
+        } catch (err) {
+          console.log(err)
+          return res.status(500).json({ error: 'Something went wrong' })
+        }
+      });
 
 module.exports = router;
