@@ -66,6 +66,7 @@ router.put('/genre/:id', async (req, res) => {
     var genre = await db.Genre.findOne({where:{id: req.params.id}})
 
     genre.name = req.body.name;
+    genre.updatedAt = new Date();
 
     await genre.save();
     
