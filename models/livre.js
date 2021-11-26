@@ -10,16 +10,32 @@ module.exports = (sequelize, DataTypes) => {
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
+    
     static associate(models) {
       Livre.belongsTo(models.Genre, { foreignKey: 'genreId', as: 'genre' })
     }
   };
   Livre.init({
-    title: DataTypes.STRING,
-    author: DataTypes.STRING,
-    image: DataTypes.STRING,
-    description: DataTypes.TEXT,
-    genreId: DataTypes.INTEGER,
+    title: {
+      allowNull: false,
+      type: DataTypes.STRING
+    },
+    author: {
+      allowNull: false,
+      type: DataTypes.STRING
+    },
+    image: {
+      allowNull: false,
+      type: DataTypes.STRING
+    },
+    description: {
+      allowNull: false,
+      type: DataTypes.TEXT
+    },
+    genreId: {
+      allowNull: false,
+      type: DataTypes.INTEGER
+    },
   }, {
     sequelize,
     modelName: 'Livre',
