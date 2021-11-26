@@ -22,6 +22,19 @@ router.get('/genre', async (req, res) => {
     });
 });
 
+router.get('/genre/:id', async (req, res) => {
+  try {
+var genre = await db.Genre.findOne({where:{id: req.params.id}})
+return res.json({
+  genre
+});
+} catch (err) {
+console.log(err)
+return res.status(500).json(err)
+}
+});
+
+
 router.post('/genre', async (req, res) => {
   try {
     const newGenre = {

@@ -7,18 +7,11 @@ const Op = db.Sequelize.Op;
 const router = express.Router();
 
 router.get('/livre', async (req, res) => {
-    /*const title = req.query.title;
-    const author = req.query.author;
-    var condition =
-    {
-        where:
-        {
-            title: "Doe",
-            author: "Jane"
-        }
-    }*/
+    
+    const title = req.query.title;
+    var condition = title ? { title: { [Op.like]: `%${title}%` } } : null;
 
-    db.Livre.findAll(/*{ where: condition }*/)
+    db.Livre.findAll({ where: condition })
         .then(data => {
             res.send(data);
         })
@@ -29,5 +22,18 @@ router.get('/livre', async (req, res) => {
             });
         });
 });
+
+
+router.get('/livre/:id', async (req, res) => {
+    try {
+  var livre = await db.Livre.findOne({where:{id: req.params.id}})
+  return res.json({
+    livre
+  });
+  } catch (err) {
+  console.log(err)
+  return res.status(500).json(err)
+  }
+  });
 
 module.exports = router;
