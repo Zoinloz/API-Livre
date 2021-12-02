@@ -1,9 +1,0 @@
-{
-  "development": {
-    "username": "root",
-    "password": "toor",
-    "database": "projetlivre",
-    "host": "141.94.16.200",
-    "dialect": "mysql"
-  }
-}
