@@ -5,13 +5,8 @@ const app = express();
 const db = require("./models");
 db.sequelize.sync();
 
-
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-Width, Content-Type, Accept, Authorization");
-  res.header("Access-Control-Allow-Methods", "GET, PUT, POST, DELETE");
-  next();
-});
+var cors = require('cors');
+app.use(cors());
 
 // parse requests of content-type - application/json
 app.use(express.json());
@@ -21,10 +16,8 @@ app.use(express.urlencoded({ extended: true }));
 
 // simple route
 app.get("/", (req, res) => {
-  res.json({ message: "Welcome to bezkoder application." });
+  res.json({ message: "Welcome to LIVRE application." });
 });
-
-
 
 
 // set port, listen for requests
