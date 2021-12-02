@@ -1,9 +1,9 @@
 {
   "development": {
     "username": "root",
-    "password": null,
+    "password": "toor",
     "database": "projetlivre",
-    "host": "localhost",
+    "host": "141.94.16.200",
     "dialect": "mysql"
   }
 }

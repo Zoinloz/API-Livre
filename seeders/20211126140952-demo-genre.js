@@ -4,11 +4,11 @@ module.exports = {
   up: async (queryInterface, Sequelize) => {
 
     await queryInterface.bulkInsert('Genres', [
-      { name: 'Romance' },
-      { name: 'Policier' },
-      { name: 'Science-Fiction' },
-      { name: 'Manga' },
-      { name: 'Roman' },
+      { name: 'Romance', createdAt: new Date(), updatedAt: new Date() },
+      { name: 'Policier', createdAt: new Date(), updatedAt: new Date() },
+      { name: 'Science-Fiction', createdAt: new Date(), updatedAt: new Date() },
+      { name: 'Manga', createdAt: new Date(), updatedAt: new Date() },
+      { name: 'Roman', createdAt: new Date(), updatedAt: new Date() },
     ], {});
 
 
@@ -18,7 +18,7 @@ module.exports = {
         author: 'Anna TODD',
         image: 'https://images-na.ssl-images-amazon.com/images/I/71lsYe6zRCL.jpg',
         description: 'lorem ipsum',
-        genreId: 1
+        genreId: 1, createdAt: new Date(), updatedAt: new Date()
       },
 
       {
@@ -26,7 +26,7 @@ module.exports = {
         author: 'Eiichirō Oda',
         image: 'https://images.bfmtv.com/FaqsZxL5IV0GD2FrPG03VJ-3QF4=/2x1:914x514/912x0/images/-331861.jpg',
         description: 'lorem ipsum',
-        genreId: 4
+        genreId: 4, createdAt: new Date(), updatedAt: new Date()
       },
 
       {
@@ -34,7 +34,7 @@ module.exports = {
         author: 'Stephen King',
         image: 'https://images-na.ssl-images-amazon.com/images/I/619OiTawH0L.jpg',
         description: 'lorem ipsum',
-        genreId: 5
+        genreId: 5, createdAt: new Date(), updatedAt: new Date()
       },
       
       {
@@ -42,7 +42,7 @@ module.exports = {
         author: 'Frank Herbert',
         image: 'https://images-na.ssl-images-amazon.com/images/I/91Z5rGEeL5L.jpg',
         description: 'lorem ipsum',
-        genreId: 3
+        genreId: 3, createdAt: new Date(), updatedAt: new Date()
       },
 
     ], {});
