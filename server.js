@@ -3,6 +3,7 @@ const express = require("express");
 const app = express();
 
 const db = require("./models");
+
 db.sequelize.sync();
 
 
@@ -31,7 +32,6 @@ app.get("/", (req, res) => {
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
-
   
   const genreRouter = require('./controllers/genre-controller');
   app.use('/', genreRouter);  
