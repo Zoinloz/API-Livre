@@ -7,6 +7,8 @@ const db = require("./models");
 db.sequelize.sync();
 
 
+app.use(cors());
+
 // parse requests of content-type - application/json
 app.use(express.json());
 
