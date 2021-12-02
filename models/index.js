@@ -7,8 +7,8 @@ const basename = path.basename(__filename);
 const db = {};
 
 
-const sequelize = new Sequelize("projetlivre", "root", "toor", {
-  host: "141.94.16.200",
+const sequelize = new Sequelize(process.env.DATABASE, process.env.USER, process.env.PASSWORD, {
+  host: process.env.HOST,
   dialect: 'mysql'
 });
 
